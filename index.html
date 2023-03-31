@@ -13,8 +13,50 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>AES-GCM encryption decryption</h1>
+    <div class="container">
+      <h1>AES-GCM enkripcija i dekripcija</h1>
+      <form>
+        <label for="textForEnc"
+          >Unesite tekst ispod ili učitajte fajl u .txt formatu</label
+        >
 
+        <textarea
+          name="textForEnc"
+          id="textForEnc"
+          rows="10"
+          placeholder="Unesite tekst"
+          required=""></textarea>
+        <div class="getFileAndReset">
+          <input
+            type="file"
+            name="getFile"
+            id="getFile"
+            onchange="readFile(this)"
+            accept=".txt" />
+          <!-- accept=".txt, .doc, .docx"  -->
+          <input type="reset" value="Resetuj" />
+        </div>
+      </form>
+      <button type="submit" class="startEncryption">Pokreni Enkripciju</button>
+    </div>
     <script src="" async defer></script>
+    <script>
+      function readFile(input) {
+        let file = input.files[0];
+
+        let reader = new FileReader();
+
+        reader.readAsText(file);
+
+        reader.onload = function () {
+          console.log(reader.result);
+          document.querySelector("#textForEnc").value = reader.result;
+        };
+
+        reader.onerror = function () {
+          console.log(reader.error);
+        };
+      }
+    </script>
   </body>
 </html>
