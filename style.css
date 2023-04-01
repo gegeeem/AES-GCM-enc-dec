@@ -37,3 +37,18 @@ form {
   display: flex;
   justify-content: center;
 }
+.hide {
+  display: none;
+}
+.keyAndIV {
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-around;
+}
+.secretKey,
+.iv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

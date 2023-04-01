@@ -25,7 +25,8 @@
           id="textForEnc"
           rows="10"
           placeholder="Unesite tekst"
-          required=""></textarea>
+          required=""
+          oninput="handleTextAreaInput(this)"></textarea>
         <div class="getFileAndReset">
           <input
             type="file"
@@ -34,10 +35,26 @@
             onchange="readFile(this)"
             accept=".txt" />
           <!-- accept=".txt, .doc, .docx"  -->
-          <input type="reset" value="Resetuj" />
+          <button onclick="isEmptyOrReset()">Poništi</button>
         </div>
       </form>
-      <button type="submit" class="startEncryption">Pokreni Enkripciju</button>
+      <button type="submit" class="startEncryption hide">
+        Pokreni Enkripciju
+      </button>
+      <div class="keyAndIV">
+        <div class="secretKey">
+          <textarea
+            name="secretKeyTxt"
+            id="secretKeyTxt"
+            cols="30"
+            rows="10"></textarea>
+          <input type="file" class="" onclick="readFile(this)" />
+        </div>
+        <div class="iv">
+          <textarea name="ivTxt" id="ivTxt" cols="30" rows="10"></textarea>
+          <button class="" onclick="readFile(this)">IV</button>
+        </div>
+      </div>
     </div>
     <script src="" async defer></script>
     <script>
@@ -51,11 +68,31 @@
         reader.onload = function () {
           console.log(reader.result);
           document.querySelector("#textForEnc").value = reader.result;
+          document.querySelector(".startEncryption").classList.remove("hide");
         };
 
         reader.onerror = function () {
           console.log(reader.error);
         };
+      }
+    </script>
+    <script>
+      const getTextArea = document.querySelector(".startEncryption");
+      function isEmptyOrReset() {
+        const getTextArea = document.querySelector(".startEncryption");
+        if (getTextArea.value) {
+          getTextArea.classList.remove("hide");
+        } else {
+          getTextArea.classList.add("hide");
+          console.log("stani");
+        }
+      }
+      function handleTextAreaInput(e) {
+        if (e.value) {
+          getTextArea.classList.remove("hide");
+        } else {
+          getTextArea.classList.add("hide");
+        }
       }
     </script>
   </body>
