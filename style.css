@@ -43,6 +43,7 @@ form {
 .keyAndIV {
   padding-top: 8px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 .secretKey,
