@@ -28,12 +28,7 @@
           required=""
           oninput="handleTextAreaInput(this)"></textarea>
         <div class="getFileAndReset">
-          <input
-            type="file"
-            name="getFile"
-            id="getFile"
-            onchange="readFile(this)"
-            accept=".txt" />
+          <input type="file" onchange="readFile(this)" accept=".txt" />
           <!-- accept=".txt, .doc, .docx"  -->
           <button onclick="isEmptyOrReset()">Poništi</button>
         </div>
