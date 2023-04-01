@@ -21,14 +21,16 @@
         >
 
         <textarea
-          name="textForEnc"
           id="textForEnc"
           rows="10"
           placeholder="Unesite tekst"
           required=""
           oninput="handleTextAreaInput(this)"></textarea>
         <div class="getFileAndReset">
-          <input type="file" onchange="readFile(this)" accept=".txt" />
+          <input
+            type="file"
+            onchange="readFile(this, '#textForEnc')"
+            accept=".txt" />
           <!-- accept=".txt, .doc, .docx"  -->
           <button onclick="isEmptyOrReset()">Poništi</button>
         </div>
@@ -38,18 +40,48 @@
       </button>
       <div class="keyAndIV">
         <div class="secretKey">
-          <textarea cols="max-30" rows="10"></textarea>
-          <input type="file" class="" onclick="readFile(this)" />
+          <h6>Unesite tajni kljuc</h6>
+          <textarea
+            class="key"
+            cols="max-30"
+            rows="8"
+            placeholder="Unesite tajni kljuc"></textarea>
+          <input type="file" class="" onchange="readFile(this,'.key')" />
         </div>
         <div class="iv">
-          <textarea cols="max-30" rows="10"></textarea>
-          <button class="" onclick="readFile(this)">IV</button>
+          <h6>Unesite IV</h6>
+
+          <textarea
+            cols="max-30"
+            rows="8"
+            class="ivTxtArea"
+            placeholder="Unesite IV"></textarea>
+          <input
+            type="file"
+            class=""
+            onchange="readFile(this,'.ivTxtArea')"
+            value="Preuzmite IV" />
         </div>
+      </div>
+      <!-- output encoded txt -->
+      <div class="displayEncryptedTxt">
+        <textarea id="areaDisplayEncTxt" rows="10"></textarea>
+      </div>
+      <!-- end of output encoded txt-->
+      <!-- download encrypted txt, secret key & iv -->
+      <div>
+        <button>Preuzmite kriptovani fajl</button>
+        <input type="text" class="exportJWK" hidden />
+        <button class="btnExportJWK">Preuzmite JWK</button>
+        <input type="text" class="exportIV" hidden />
+        <button class="btnExportIV">Preuzmite IV</button>
       </div>
     </div>
     <script src="" async defer></script>
     <script>
-      function readFile(input) {
+      function readFile(input, elementSelector) {
+        console.log("selektor: ", elementSelector);
+
         let file = input.files[0];
 
         let reader = new FileReader();
@@ -58,7 +90,7 @@
 
         reader.onload = function () {
           console.log(reader.result);
-          document.querySelector("#textForEnc").value = reader.result;
+          document.querySelector(elementSelector).value = reader.result;
           document.querySelector(".startEncryption").classList.remove("hide");
         };
 
@@ -69,7 +101,7 @@
     </script>
     <script>
       const getTextArea = document.querySelector(".startEncryption");
-      function isEmptyOrReset() {
+      function isEmptyOrReset(e) {
         const getTextArea = document.querySelector(".startEncryption");
         if (getTextArea.value) {
           getTextArea.classList.remove("hide");

@@ -53,3 +53,9 @@ form {
   justify-content: center;
   align-items: center;
 }
+.displayEncryptedTxt {
+  display: flex;
+}
+#areaDisplayEncTxt {
+  width: 100%;
+}
