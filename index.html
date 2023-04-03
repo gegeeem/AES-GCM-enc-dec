@@ -50,7 +50,10 @@
               cols="max-30"
               rows="8"
               placeholder="Unesite tajni kljuc"></textarea>
-            <input type="file" class="user" onchange="readFile(this,'.key')" />
+            <input
+              type="file"
+              class="user"
+              onchange="readFile(this,'.keyTxt')" />
           </div>
           <div class="iv">
             <h6>Unesite IV</h6>
@@ -80,8 +83,8 @@
       <!-- <input type="button" class="hajde" value="preuzmi" /> -->
       <!-- end of start ecnryption -->
       <!-- download encrypted txt, secret key & iv -->
+      <button class="hajde">Preuzmite kriptovani fajl</button>
       <div>
-        <button class="hajde">Preuzmite kriptovani fajl</button>
         <input type="text" class="exportJWK" />
         <button class="btnExportJWK">Preuzmite JWK</button>
         <input type="text" class="exportIV" />

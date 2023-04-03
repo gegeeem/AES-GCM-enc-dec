@@ -1,15 +1,8 @@
 let ciphertext;
 let iv;
-let fileHandle;
-console.log("encryption js pozvana");
 /*
 /** */
 const handleimportTxtFileForEnc = async () => {
-  //   [fileHandle] = await window.showOpenFilePicker();
-
-  //   const file = await fileHandle.getFile();
-  //   const content = await file.text();
-
   const geinput = document.querySelector("#textForEnc");
   geinput.value = content;
 
@@ -52,25 +45,37 @@ async function enkripcija(key) {
   return exportedAsBase64;
 }
 /*get user key  and IV*/
-function getUserInputKey() {
+async function getUserInputKey() {
   const getKey = document.querySelector(".keyTxt").value;
-  return getKey;
+  console.log("getKey", getKey);
+  const jwk = await window.crypto.subtle.importKey(
+    "jwk",
+    JSON.parse(getKey),
+    {
+      name: "AES-GCM",
+    },
+    true,
+    ["encrypt", "decrypt"]
+  );
+  console.log("jwk", jwk);
+  return jwk;
 }
 function getUserInputIV() {
-  const getIv = document.querySelector(".ivTxtArea");
-  return getIv;
+  const getIv = document.querySelector(".ivTxtArea").value;
+  const ivEnc = new Uint8Array(getIv.split(",").map((el) => parseInt(el, 10)));
+  return ivEnc;
 }
 /*end of get user key */
 /*encryption for user input jwk and iv */
-async function encryptionUserInput(key, iv) {
+async function encryptionUserInput(keyUser, ivUser) {
   let encoded = getMessageEncoding("#textForEnc");
-  iv = window.crypto.getRandomValues(new Uint8Array(12));
+
   ciphertext = await window.crypto.subtle.encrypt(
     {
       name: "AES-GCM",
-      iv: iv,
+      iv: ivUser,
     },
-    key,
+    keyUser,
     encoded
   );
   const exportedAsString = ab2str(ciphertext);
@@ -199,7 +204,18 @@ const handleBtnTextForEnc = async () => {
       });
   }
 
-  // if(userInputKeyIV.checked) encryptionUserInput()
+  if (userInputKeyIV.checked) {
+    const insertedKey = getUserInputKey();
+    const insertedIV = getUserInputIV();
+    console.log("insertedKey", insertedKey);
+    console.log("insertedIV", insertedIV);
+    const n = await getUserInputKey().then((res) =>
+      encryptionUserInput(res, insertedIV).then((res) => res)
+    );
+    const textForEnc = document.querySelector("#areaDisplayEncTxt");
+    textForEnc.value = n;
+    btnExportTextForEnc.addEventListener("click", handleBtnExportTextForEnc);
+  }
 };
 
 const startEncryption = document.querySelector(".startEncryption");
