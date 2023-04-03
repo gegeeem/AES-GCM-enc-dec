@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-label {
+.labelTextForEnc {
   background-color: rgb(233, 220, 233);
   border: 1px solid gray;
   border-top-left-radius: 5px;
@@ -37,12 +37,11 @@ form {
   display: flex;
   justify-content: center;
 }
-.hide {
-  display: none;
-}
+
 .keyAndIV {
   padding-top: 8px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
 }
@@ -53,9 +52,17 @@ form {
   justify-content: center;
   align-items: center;
 }
-.displayEncryptedTxt {
+.displayEncryptedTxt,
+.displayKeyAndIV {
   display: flex;
 }
 #areaDisplayEncTxt {
   width: 100%;
+}
+.displayKeyIv {
+  display: flex;
+  flex-direction: row;
+}
+.hide {
+  display: none;
 }
