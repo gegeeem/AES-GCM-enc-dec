@@ -15,81 +15,91 @@
   <body>
     <div class="container">
       <h1>AES-GCM enkripcija i dekripcija</h1>
-      <form>
-        <label for="textForEnc" class="labelTextForEnc"
-          >Unesite tekst ispod ili učitajte fajl u .txt formatu</label
-        >
+      <div class="toggleEncDec">
+        <div class="encryptionSlct selected">Enkripcija</div>
+        <div class="decryptionSlct">Dekripcija</div>
+      </div>
+      <div class="encryption">
+        <form>
+          <label for="textForEnc" class="labelTextForEnc"
+            >Unesite tekst ispod ili učitajte fajl u .txt formatu</label
+          >
 
-        <textarea
-          id="textForEnc"
-          rows="10"
-          placeholder="Unesite tekst"
-          required=""
-          oninput="handleTextAreaInput(this)"></textarea>
-        <div class="getFileAndReset">
-          <input
-            type="file"
-            onchange="readFile(this, '#textForEnc')"
-            accept=".txt" />
-          <!-- accept=".txt, .doc, .docx"  -->
-          <button onclick="isEmptyOrReset()">Poništi</button>
-          <input type="reset" value="ne" />
-        </div>
-      </form>
-
-      <div class="keyAndIV">
-        <label for="userKeyIV"
-          ><input type="checkbox" name="userKeyIV" id="userKeyIV" />Unesite
-          postojeci tajni kljuc i IV</label
-        >
-        <div class="displayKeyAndIV hide">
-          <div class="secretKey">
-            <h6>Unesite tajni kljuc</h6>
-            <textarea
-              class="keyTxt user"
-              cols="max-30"
-              rows="8"
-              placeholder="Unesite tajni kljuc"></textarea>
+          <textarea
+            id="textForEnc"
+            rows="10"
+            placeholder="Unesite tekst"
+            required=""
+            oninput="handleTextAreaInput(this)"></textarea>
+          <div class="getFileAndReset">
             <input
               type="file"
-              class="user"
-              onchange="readFile(this,'.keyTxt')" />
+              onchange="readFile(this, '#textForEnc')"
+              accept=".txt" />
+            <!-- accept=".txt, .doc, .docx"  -->
+            <button onclick="isEmptyOrReset()">Poništi</button>
+            <input type="reset" value="ne" />
           </div>
-          <div class="iv">
-            <h6>Unesite IV</h6>
+        </form>
 
-            <textarea
-              cols="max-30"
-              rows="8"
-              class="ivTxtArea user"
-              placeholder="Unesite IV"></textarea>
-            <input
-              type="file"
-              class="user"
-              onchange="readFile(this,'.ivTxtArea')"
-              value="Preuzmite IV" />
+        <div class="keyAndIV">
+          <label for="userKeyIV"
+            ><input type="checkbox" name="userKeyIV" id="userKeyIV" />Unesite
+            postojeci tajni kljuc i IV</label
+          >
+          <div class="displayKeyAndIV hide">
+            <div class="secretKey">
+              <h6>Unesite tajni kljuc</h6>
+              <textarea
+                class="keyTxt user"
+                cols="30"
+                rows="8"
+                placeholder="Unesite tajni kljuc"></textarea>
+              <input
+                type="file"
+                class="user"
+                onchange="readFile(this,'.keyTxt')" />
+            </div>
+            <div class="iv">
+              <h6>Unesite IV</h6>
+
+              <textarea
+                cols="30"
+                rows="8"
+                class="ivTxtArea user"
+                placeholder="Unesite IV"></textarea>
+              <input
+                type="file"
+                class="user"
+                onchange="readFile(this,'.ivTxtArea')"
+                value="Preuzmite IV" />
+            </div>
           </div>
         </div>
+        <!-- start encyption btn -->
+        <button type="submit" class="startEncryption hide">
+          Pokreni Enkripciju
+        </button>
+        <!-- end of start encryptionbtn -->
+        <!-- output encoded txt -->
+        <div class="displayEncryptedTxt">
+          <textarea id="areaDisplayEncTxt" rows="10"></textarea>
+        </div>
+        <!-- end of output encoded txt-->
+        <!-- start encryption -->
+
+        <!-- <input type="button" class="hajde" value="preuzmi" /> -->
+        <!-- end of start ecnryption -->
+        <!-- download encrypted txt, secret key & iv -->
+        <button class="hajde">Preuzmite kriptovani fajl</button>
+        <div>
+          <input type="text" class="exportJWK" />
+          <button class="btnExportJWK">Preuzmite JWK</button>
+          <input type="text" class="exportIV" />
+          <button class="btnExportIV">Preuzmite IV</button>
+        </div>
       </div>
-      <!-- output encoded txt -->
-      <div class="displayEncryptedTxt">
-        <textarea id="areaDisplayEncTxt" rows="10"></textarea>
-      </div>
-      <!-- end of output encoded txt-->
-      <!-- start encryption -->
-      <button type="submit" class="startEncryption hide">
-        Pokreni Enkripciju
-      </button>
-      <!-- <input type="button" class="hajde" value="preuzmi" /> -->
-      <!-- end of start ecnryption -->
-      <!-- download encrypted txt, secret key & iv -->
-      <button class="hajde">Preuzmite kriptovani fajl</button>
-      <div>
-        <input type="text" class="exportJWK" />
-        <button class="btnExportJWK">Preuzmite JWK</button>
-        <input type="text" class="exportIV" />
-        <button class="btnExportIV">Preuzmite IV</button>
-      </div>
+      <div class="decryption hide">Decryption</div>
     </div>
     <script src="encryption.js"></script>
     <script>
@@ -133,5 +143,6 @@
       }
     </script>
     <script src="toggleCheckBox.js"></script>
+    <script src="selectEncDec.js"></script>
   </body>
 </html>

@@ -50,11 +50,15 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
-.displayEncryptedTxt,
-.displayKeyAndIV {
+.displayEncryptedTxt {
   display: flex;
+}
+.displayKeyAndIV,
+.toggleEncDec {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 #areaDisplayEncTxt {
   width: 100%;
@@ -62,6 +66,20 @@ form {
 .displayKeyIv {
   display: flex;
   flex-direction: row;
+}
+.encryptionSlct,
+.decryptionSlct {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(239, 235, 243, 0.89);
+  border: 2px solid rgb(190, 179, 201);
+}
+:where(.encryptionSlct, .decryptionSlct):hover {
+  cursor: pointer;
+}
+.selected {
+  background-color: rgb(211, 201, 221);
+  border: 2px solid rgb(176, 167, 185);
 }
 .hide {
   display: none;
