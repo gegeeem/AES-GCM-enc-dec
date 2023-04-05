@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -15,10 +12,12 @@
   <body>
     <div class="container">
       <h1>AES-GCM enkripcija i dekripcija</h1>
+      <!-- select  action, encryption or decription -->
       <div class="toggleEncDec">
         <div class="encryptionSlct selected">Enkripcija</div>
         <div class="decryptionSlct">Dekripcija</div>
       </div>
+      <!-- encryption -->
       <div class="encryption">
         <form>
           <label for="textForEnc" class="labelTextForEnc"
@@ -44,8 +43,11 @@
 
         <div class="keyAndIV">
           <label for="userKeyIV"
-            ><input type="checkbox" name="userKeyIV" id="userKeyIV" />Unesite
-            postojeci tajni kljuc i IV</label
+            ><input
+              type="checkbox"
+              name="userKeyIV"
+              id="userKeyIV"
+              class="userKeyIV" />Unesite postojeci tajni kljuc i IV</label
           >
           <div class="displayKeyAndIV hide">
             <div class="secretKey">
@@ -99,7 +101,80 @@
           <button class="btnExportIV">Preuzmite IV</button>
         </div>
       </div>
-      <div class="decryption hide">Decryption</div>
+      <!-- end of encryption -->
+      <!-- decryption -->
+      <div class="decryption hide">
+        <form>
+          <label for="textForDec" class="labelTextForEnc"
+            >Unesite tekst ispod ili učitajte fajl u .txt formatu</label
+          >
+
+          <textarea
+            id="textForDec"
+            class=""
+            rows="10"
+            placeholder="Unesite sifrovani tekst"
+            required=""
+            oninput=""></textarea>
+          <div class="getFileAndReset">
+            <input
+              type="file"
+              onchange="readFile(this, '#textForDec')"
+              accept=".txt" />
+            <!-- accept=".txt, .doc, .docx"  -->
+            <button onclick="isEmptyOrReset()">Poništi</button>
+            <input type="reset" value="ne" />
+          </div>
+        </form>
+
+        <div class="keyAndIV">
+          <h3>Unesite postojeci tajni kljuc i IV</h3>
+          <div class="displayKeyAndIVDec">
+            <div class="secretKey">
+              <h6>Unesite tajni kljuc</h6>
+              <textarea
+                class="keyTxtDec user"
+                cols="30"
+                rows="8"
+                placeholder="Unesite tajni kljuc"></textarea>
+              <input
+                type="file"
+                class="user"
+                onchange="readFile(this,'.keyTxtDec')" />
+            </div>
+            <div class="iv">
+              <h6>Unesite IV</h6>
+
+              <textarea
+                cols="30"
+                rows="8"
+                class="ivTxtAreaDec user"
+                placeholder="Unesite IV"></textarea>
+              <input
+                type="file"
+                class="user"
+                onchange="readFile(this,'.ivTxtAreaDec')"
+                value="Preuzmite IV" />
+            </div>
+          </div>
+        </div>
+        <!-- start encyption btn -->
+        <button type="submit" class="startDecryption">
+          Pokreni Enkripciju
+        </button>
+        <!-- end of start encryptionbtn -->
+        <!-- output encoded txt -->
+        <div class="displayEncryptedTxt">
+          <textarea id="areaDisplayDecTxt" rows="10"></textarea>
+        </div>
+        <!-- end of output encoded txt-->
+        <!-- start encryption -->
+
+        <!-- <input type="button" class="hajde" value="preuzmi" /> -->
+        <!-- end of start ecnryption -->
+        <!-- download encrypted txt, secret key & iv -->
+        <button class="exportDecFile">Preuzmite dekriptovani fajl</button>
+      </div>
     </div>
     <script src="encryption.js"></script>
     <script>
@@ -144,5 +219,6 @@
     </script>
     <script src="toggleCheckBox.js"></script>
     <script src="selectEncDec.js"></script>
+    <script src="decryption.js"></script>
   </body>
 </html>

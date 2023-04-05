@@ -1,9 +1,14 @@
-function toggler() {
-  const tog = document.querySelector("#userKeyIV");
-  const keyIVEnableDisable = document.querySelector(".displayKeyAndIV");
-  if (tog.checked) keyIVEnableDisable.classList.remove("hide");
+function enableUserJwkIv(checkboxQueryName, displayClassName) {
+  const toggle = () => {
+    const tog = document.querySelector(checkboxQueryName);
 
-  if (!tog.checked) keyIVEnableDisable.classList.add("hide");
+    const keyIVEnableDisable = document.querySelector(displayClassName);
+    if (tog.checked) keyIVEnableDisable.classList.remove("hide");
+
+    if (!tog.checked) keyIVEnableDisable.classList.add("hide");
+  };
+  const userKeyIV = document.querySelector(checkboxQueryName);
+  userKeyIV.addEventListener("click", toggle);
 }
-const userKeyIV = document.querySelector("#userKeyIV");
-userKeyIV.addEventListener("click", toggler);
+enableUserJwkIv("#userKeyIV", ".displayKeyAndIV"); // enable user input jwk adn iv for encryption
+// enableUserJwkIv("#userKeyIVDec", ".displayKeyAndIVDec"); // enable user input jwk and iv for decryption
