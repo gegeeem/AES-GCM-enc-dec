@@ -8,6 +8,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: large;
+  color: rgb(80, 80, 80);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -78,9 +79,10 @@ textarea {
   border-radius: 5px;
   border: 2px solid rgb(240, 239, 239);
   resize: vertical;
+  padding: 8px;
 }
 textarea:focus {
-  box-shadow: inset;
+  outline-color: #446aab;
 }
 
 form {
@@ -96,7 +98,16 @@ form {
   justify-content: center;
   align-items: center;
 }
-
+button {
+  padding: 5px 10px;
+  background-color: #446aab;
+  color: aliceblue;
+  border-radius: 5px;
+  border: 0;
+}
+input[type="checkbox"] {
+  accent-color: #446aab;
+}
 .keyAndIV {
   padding-top: 8px;
   display: flex;

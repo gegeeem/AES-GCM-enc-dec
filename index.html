@@ -8,6 +8,12 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
   </head>
   <body>
     <div class="container">
@@ -31,10 +37,16 @@
             required=""
             oninput="handleTextAreaInput(this)"></textarea>
           <div class="getFileAndReset">
+            <label for="textForEncFile"
+              >Izaberite fajl
+              <i class="fas fa-file-upload fa-xl" style="color: #7690bc"></i
+            ></label>
             <input
+              id="textForEncFile"
               type="file"
               onchange="readFile(this, '#textForEnc')"
-              accept=".txt" />
+              accept=".txt"
+              hidden />
             <!-- accept=".txt, .doc, .docx"  -->
             <button onclick="isEmptyOrReset()">Poništi</button>
             <input type="reset" value="ne" />
