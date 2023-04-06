@@ -37,9 +37,8 @@
             required=""
             oninput="handleTextAreaInput(this)"></textarea>
           <div class="getFileAndReset">
-            <label for="textForEncFile"
-              >Izaberite fajl
-              <i class="fas fa-file-upload fa-xl" style="color: #7690bc"></i
+            <label for="textForEncFile" class="textForEncFileLabel"
+              >Izaberite fajl <i class="fas fa-file-upload"></i
             ></label>
             <input
               id="textForEncFile"
@@ -49,7 +48,7 @@
               hidden />
             <!-- accept=".txt, .doc, .docx"  -->
             <button onclick="isEmptyOrReset()">Poništi</button>
-            <input type="reset" value="ne" />
+            <!-- <input type="reset" value="ne" /> -->
           </div>
         </form>
 
@@ -70,9 +69,14 @@
                 rows="8"
                 placeholder="Unesite tajni kljuc"></textarea>
               <input
+                id="jwk"
                 type="file"
                 class="user"
-                onchange="readFile(this,'.keyTxt')" />
+                onchange="readFile(this,'.keyTxt')"
+                hidden />
+              <label for="jwk" class="textForEncFileLabel"
+                >Izaberite fajl <i class="fas fa-file-upload"></i
+              ></label>
             </div>
             <div class="iv">
               <h6>Unesite IV</h6>
@@ -83,10 +87,15 @@
                 class="ivTxtArea user"
                 placeholder="Unesite IV"></textarea>
               <input
+                id="iv"
                 type="file"
                 class="user"
                 onchange="readFile(this,'.ivTxtArea')"
-                value="Preuzmite IV" />
+                value="Preuzmite IV"
+                hidden />
+              <label for="iv" class="textForEncFileLabel"
+                >Izaberite fajl <i class="fas fa-file-upload"></i
+              ></label>
             </div>
           </div>
         </div>
@@ -105,7 +114,9 @@
         <!-- <input type="button" class="hajde" value="preuzmi" /> -->
         <!-- end of start ecnryption -->
         <!-- download encrypted txt, secret key & iv -->
-        <button class="hajde">Preuzmite kriptovani fajl</button>
+        <button class="hajde">
+          Preuzmite kriptovani fajl <i class="fas fa-file-download"></i>
+        </button>
         <div>
           <input type="text" class="exportJWK" />
           <button class="btnExportJWK">Preuzmite JWK</button>
@@ -185,7 +196,12 @@
         <!-- <input type="button" class="hajde" value="preuzmi" /> -->
         <!-- end of start ecnryption -->
         <!-- download encrypted txt, secret key & iv -->
-        <button class="exportDecFile">Preuzmite dekriptovani fajl</button>
+        <button class="exportDecFile">
+          Preuzmite dekriptovani fajl<i
+            class="fas fa-file-upload"
+            style="color: aqua"></i>
+        </button>
+        <i class="fas fa-file-upload"></i>
       </div>
     </div>
     <script src="encryption.js"></script>

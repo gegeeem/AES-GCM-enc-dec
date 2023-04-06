@@ -3,12 +3,16 @@
 *:after {
   box-sizing: border-box;
 }
+:root {
+  --gray: rgb(182, 182, 182);
+  --blueTranspa: #446aabcb;
+}
 body {
   background-color: rgb(243, 248, 252);
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: large;
-  color: rgb(80, 80, 80);
+  color: rgb(102, 102, 102);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -23,17 +27,19 @@ body {
   border-radius: 5px;
   background-color: rgb(254, 254, 255);
   /* border: 1px solid gray; */
-  -webkit-box-shadow: 0px 0px 33px 0px rgba(148, 148, 148, 1);
-  -moz-box-shadow: 0px 0px 33px 0px rgba(148, 148, 148, 1);
-  box-shadow: 0px 0px 33px 0px rgba(148, 148, 148, 1);
+  -webkit-box-shadow: 0px 0px 43px 0px rgba(186, 184, 186, 1);
+  -moz-box-shadow: 0px 0px 43px 0px rgba(186, 184, 186, 1);
+  box-shadow: 0px 0px 43px 0px rgba(186, 184, 186, 1);
 }
 .container > h1 {
+  width: 98%;
+  color: inherit;
   margin: 0 15px;
   padding: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgb(207, 205, 205);
+  border-bottom: 2px solid var(--gray);
 }
 .toggleEncDec {
   width: 100%;
@@ -44,28 +50,32 @@ body {
 }
 .encryptionSlct,
 .decryptionSlct {
+  color: rgb(138, 138, 138);
   min-width: 45%;
   padding-top: 10px;
   padding-bottom: 10px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   /* background-color: rgba(250, 247, 255, 0.89); */
-  border-top: 2px solid rgb(240, 239, 239);
-  border-left: 2px solid rgb(240, 239, 239);
-  border-right: 2px solid rgb(240, 239, 239);
+  border-top: 2px solid var(--gray);
+  border-left: 2px solid var(--gray);
+  border-right: 2px solid var(--gray);
 }
 :where(.encryptionSlct, .decryptionSlct):hover {
   cursor: pointer;
 }
 .selected {
-  background-color: rgb(240, 239, 239);
-  color: rgb(66, 66, 66);
-  border-top: 2px solid rgb(240, 239, 239);
-  border-left: 2px solid rgb(240, 239, 239);
-  border-right: 2px solid rgb(240, 239, 239);
+  background-color: var(--gray);
+  color: rgb(255, 255, 255);
+  border-top: 2px solid var(--gray);
+  border-left: 2px solid var(--gray);
+  border-right: 2px solid var(--gray);
 }
 .encryption {
-  border: 2px solid rgb(240, 239, 239);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--gray);
   min-width: 98%;
   border-radius: 5px;
 }
@@ -77,7 +87,7 @@ body {
 textarea {
   width: 98%;
   border-radius: 5px;
-  border: 2px solid rgb(240, 239, 239);
+  border: 2px solid rgb(207, 207, 207);
   resize: vertical;
   padding: 8px;
 }
@@ -92,23 +102,48 @@ form {
   align-items: center;
   flex-direction: column;
 }
+.textForEncFileLabel {
+  font-size: medium;
+  /* background-color: var(--blueTranspa); */
+  border: 2px solid var(--blueTranspa);
+  color: var(--blueTranspa);
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin: 3px;
+}
+.textForEncFileLabel:hover {
+  background-color: #446aab;
+  color: rgb(255, 255, 255);
+}
+
 .getFileAndReset {
+  width: 98%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
 }
 button {
-  padding: 5px 10px;
-  background-color: #446aab;
-  color: aliceblue;
-  border-radius: 5px;
+  font-size: medium;
+  font-family: inherit;
+  padding: 8px 10px;
   border: 0;
+  background-color: white;
+  border: 2px solid var(--blueTranspa);
+  color: var(--blueTranspa);
+  border-radius: 5px;
+
+  margin: 3px;
+}
+button:hover {
+  background-color: #446aab;
+  color: white;
+  border-radius: 5px;
 }
 input[type="checkbox"] {
   accent-color: #446aab;
 }
 .keyAndIV {
+  width: 100%;
   padding-top: 8px;
   display: flex;
   flex-direction: column;
@@ -117,15 +152,21 @@ input[type="checkbox"] {
 }
 .secretKey,
 .iv {
+  min-width: 48%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .displayEncryptedTxt {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98%;
 }
 .displayKeyAndIV,
 .displayKeyAndIVDec {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
