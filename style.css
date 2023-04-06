@@ -16,9 +16,11 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-width: 80%;
+  padding: 15px;
   border-radius: 5px;
-  background-color: rgb(246, 246, 247);
+  background-color: rgb(254, 254, 255);
   /* border: 1px solid gray; */
   -webkit-box-shadow: 0px 0px 33px 0px rgba(148, 148, 148, 1);
   -moz-box-shadow: 0px 0px 33px 0px rgba(148, 148, 148, 1);
@@ -32,28 +34,39 @@ body {
   align-items: center;
   border-bottom: 1px solid rgb(207, 205, 205);
 }
+.toggleEncDec {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 10px;
+}
 .encryptionSlct,
 .decryptionSlct {
-  padding: 10px 40px;
+  min-width: 45%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   /* background-color: rgba(250, 247, 255, 0.89); */
-  border-top: 2px solid rgb(233, 220, 233);
-  border-left: 2px solid rgb(233, 220, 233);
-  border-right: 2px solid rgb(233, 220, 233);
+  border-top: 2px solid rgb(240, 239, 239);
+  border-left: 2px solid rgb(240, 239, 239);
+  border-right: 2px solid rgb(240, 239, 239);
 }
 :where(.encryptionSlct, .decryptionSlct):hover {
   cursor: pointer;
 }
 .selected {
-  background-color: rgb(233, 220, 233);
-  border-top: 2px solid rgb(216, 204, 216);
-  border-left: 2px solid rgb(216, 204, 216);
-  border-right: 2px solid rgb(216, 204, 216);
+  background-color: rgb(240, 239, 239);
+  color: rgb(66, 66, 66);
+  border-top: 2px solid rgb(240, 239, 239);
+  border-left: 2px solid rgb(240, 239, 239);
+  border-right: 2px solid rgb(240, 239, 239);
 }
 .encryption {
-  background-color: rgb(233, 220, 233);
-  margin: 0 15px;
+  border: 2px solid rgb(240, 239, 239);
+  min-width: 98%;
+  border-radius: 5px;
 }
 .labelTextForEnc {
   border-top-left-radius: 5px;
@@ -61,14 +74,13 @@ body {
   padding: 10px 0;
 }
 textarea {
-  background-color: rgb(249, 250, 252);
   width: 98%;
   border-radius: 5px;
-  outline: none;
+  border: 2px solid rgb(240, 239, 239);
   resize: vertical;
 }
 textarea:focus {
-  background-color: rgb(252, 253, 253);
+  box-shadow: inset;
 }
 
 form {
@@ -80,7 +92,9 @@ form {
 }
 .getFileAndReset {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 .keyAndIV {
@@ -100,7 +114,6 @@ form {
   display: flex;
 }
 .displayKeyAndIV,
-.toggleEncDec,
 .displayKeyAndIVDec {
   display: flex;
   flex-wrap: wrap;
