@@ -33,7 +33,7 @@
           <textarea
             id="textForEnc"
             rows="10"
-            placeholder="Unesite tekst"
+            placeholder="Tekst"
             required=""
             oninput="handleTextAreaInput(this)"></textarea>
           <div class="getFileAndReset">
@@ -67,7 +67,7 @@
                 class="keyTxt user"
                 cols="30"
                 rows="8"
-                placeholder="Unesite tajni kljuc"></textarea>
+                placeholder="Tajni kljuc"></textarea>
               <input
                 id="jwk"
                 type="file"
@@ -75,7 +75,7 @@
                 onchange="readFile(this,'.keyTxt')"
                 hidden />
               <label for="jwk" class="textForEncFileLabel"
-                >Izaberite fajl <i class="fas fa-file-upload"></i
+                >Izaberite ključ <i class="fas fa-file-upload"></i
               ></label>
             </div>
             <div class="iv">
@@ -85,7 +85,7 @@
                 cols="30"
                 rows="8"
                 class="ivTxtArea user"
-                placeholder="Unesite IV"></textarea>
+                placeholder="IV"></textarea>
               <input
                 id="iv"
                 type="file"
@@ -94,7 +94,7 @@
                 value="Preuzmite IV"
                 hidden />
               <label for="iv" class="textForEncFileLabel"
-                >Izaberite fajl <i class="fas fa-file-upload"></i
+                >Izaberite IV <i class="fas fa-file-upload"></i
               ></label>
             </div>
           </div>
@@ -106,7 +106,11 @@
         <!-- end of start encryptionbtn -->
         <!-- output encoded txt -->
         <div class="displayEncryptedTxt">
-          <textarea id="areaDisplayEncTxt" rows="10"></textarea>
+          <textarea
+            id="areaDisplayEncTxt"
+            rows="10"
+            placeholder="Dekriptovani tekst"
+            readonly></textarea>
         </div>
         <!-- end of output encoded txt-->
         <!-- start encryption -->
@@ -117,11 +121,19 @@
         <button class="hajde">
           Preuzmite kriptovani fajl <i class="fas fa-file-download"></i>
         </button>
-        <div>
-          <input type="text" class="exportJWK" />
-          <button class="btnExportJWK">Preuzmite JWK</button>
-          <input type="text" class="exportIV" />
-          <button class="btnExportIV">Preuzmite IV</button>
+        <div class="displayKeyAndIV">
+          <div class="secretKey">
+            <textarea cols="30" rows="8" class="exportJWK" readonly></textarea>
+            <button class="btnExportJWK">
+              Preuzmite JWK <i class="fas fa-file-download"></i>
+            </button>
+          </div>
+          <div class="iv">
+            <textarea cols="30" rows="8" class="exportIV" readonly></textarea>
+            <button class="btnExportIV">
+              Preuzmite IV <i class="fas fa-file-download"></i>
+            </button>
+          </div>
         </div>
       </div>
       <!-- end of encryption -->
@@ -140,13 +152,18 @@
             required=""
             oninput=""></textarea>
           <div class="getFileAndReset">
+            <label for="textForDecFile" class="textForEncFileLabel"
+              >Izaberite fajl <i class="fas fa-file-upload"></i
+            ></label>
             <input
+              id="textForDecFile"
               type="file"
               onchange="readFile(this, '#textForDec')"
-              accept=".txt" />
+              accept=".txt"
+              hidden />
             <!-- accept=".txt, .doc, .docx"  -->
             <button onclick="isEmptyOrReset()">Poništi</button>
-            <input type="reset" value="ne" />
+            <!-- <input type="reset" value="ne" /> -->
           </div>
         </form>
 
@@ -160,10 +177,15 @@
                 cols="30"
                 rows="8"
                 placeholder="Unesite tajni kljuc"></textarea>
+              <label for="jwkForDec" class="textForEncFileLabel"
+                >Izaberite ključ <i class="fas fa-file-upload"></i
+              ></label>
               <input
+                id="jwkForDec"
                 type="file"
                 class="user"
-                onchange="readFile(this,'.keyTxtDec')" />
+                onchange="readFile(this,'.keyTxtDec')"
+                hidden />
             </div>
             <div class="iv">
               <h6>Unesite IV</h6>
@@ -173,35 +195,41 @@
                 rows="8"
                 class="ivTxtAreaDec user"
                 placeholder="Unesite IV"></textarea>
+              <label for="ivForDec" class="textForEncFileLabel"
+                >Izaberite IV <i class="fas fa-file-upload"></i
+              ></label>
               <input
+                id="ivForDec"
                 type="file"
                 class="user"
                 onchange="readFile(this,'.ivTxtAreaDec')"
-                value="Preuzmite IV" />
+                value="Preuzmite IV"
+                hidden />
             </div>
           </div>
         </div>
         <!-- start encyption btn -->
         <button type="submit" class="startDecryption">
-          Pokreni Enkripciju
+          Pokreni Dekripciju
         </button>
-        <!-- end of start encryptionbtn -->
-        <!-- output encoded txt -->
+        <!-- end of start decryptionbtn -->
+        <!-- output decoded txt -->
         <div class="displayEncryptedTxt">
-          <textarea id="areaDisplayDecTxt" rows="10"></textarea>
+          <textarea
+            id="areaDisplayDecTxt"
+            rows="10"
+            required
+            readonly></textarea>
         </div>
-        <!-- end of output encoded txt-->
-        <!-- start encryption -->
+        <!-- end of output decoded txt-->
+        <!-- start decryption -->
 
         <!-- <input type="button" class="hajde" value="preuzmi" /> -->
         <!-- end of start ecnryption -->
         <!-- download encrypted txt, secret key & iv -->
         <button class="exportDecFile">
-          Preuzmite dekriptovani fajl<i
-            class="fas fa-file-upload"
-            style="color: aqua"></i>
+          Preuzmite dekriptovani fajl <i class="fas fa-file-download"></i>
         </button>
-        <i class="fas fa-file-upload"></i>
       </div>
     </div>
     <script src="encryption.js"></script>
