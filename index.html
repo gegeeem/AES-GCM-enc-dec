@@ -37,7 +37,7 @@
             rows="10"
             placeholder="Tekst"
             required=""
-            oninput="handleTextAreaInput(this)"></textarea>
+            oninput="handleTextAreaInput('#textForEnc', '#keyTxtUser','#ivTxtAreaUser')"></textarea>
           <div class="getFileAndReset">
             <label for="textForEncFile" class="textForEncFileLabel"
               >Izaberite fajl <i class="fas fa-file-upload"></i
@@ -55,12 +55,14 @@
           <!-- <button onclick="isEmptyOrReset()">Poništi</button> -->
         </form>
         <div class="keyAndIV">
-          <label for="userKeyIV" class="userKeyIVLabel"
+          <label for="userKeyIVch" class="userKeyIVLabel"
             ><input
               type="checkbox"
               name="userKeyIV"
-              id="userKeyIV"
-              class="userKeyIV" />Unesite postojeci tajni kljuc i IV</label
+              id="userKeyIVch"
+              class="userKeyIV"
+              onclick="handleTextAreaInput('#textForEnc', '#keyTxtUser','#ivTxtAreaUser')" />Unesite
+            postojeci tajni kljuc i IV</label
           >
           <div class="displayKeyAndIV hide">
             <div class="secretKey">
@@ -70,7 +72,8 @@
                 class="keyTxt user"
                 cols="30"
                 rows="8"
-                placeholder="Tajni kljuc"></textarea>
+                placeholder="Tajni kljuc"
+                oninput="handleTextAreaInput('#textForEnc', '#keyTxtUser','#ivTxtAreaUser')"></textarea>
               <input
                 id="jwk"
                 type="file"
@@ -95,7 +98,8 @@
                 cols="30"
                 rows="8"
                 class="ivTxtArea user"
-                placeholder="IV"></textarea>
+                placeholder="IV"
+                oninput="handleTextAreaInput('#textForEnc', '#keyTxtUser','#ivTxtAreaUser')"></textarea>
               <input
                 id="iv"
                 type="file"
@@ -169,7 +173,7 @@
             rows="10"
             placeholder="Unesite sifrovani tekst"
             required=""
-            oninput=""></textarea>
+            oninput="handleTextJwkIVforDec('#textForDec', '#keyTxtDecUser', '#ivTxtAreaDecUser')"></textarea>
           <div class="getFileAndReset">
             <label for="textForDecFile" class="textForEncFileLabel"
               >Izaberite fajl <i class="fas fa-file-upload"></i
@@ -192,13 +196,22 @@
             <div class="secretKey">
               <h6>Unesite tajni kljuc</h6>
               <textarea
+                id="keyTxtDecUser"
                 class="keyTxtDec user"
                 cols="30"
                 rows="8"
-                placeholder="Unesite tajni kljuc"></textarea>
-              <label for="jwkForDec" class="textForEncFileLabel"
-                >Izaberite ključ <i class="fas fa-file-upload"></i
-              ></label>
+                placeholder="Unesite tajni kljuc"
+                oninput="handleTextJwkIVforDec('#textForDec', '#keyTxtDecUser', '#ivTxtAreaDecUser')"></textarea>
+              <div>
+                <label for="jwkForDec" class="textForEncFileLabel"
+                  >Izaberite ključ <i class="fas fa-file-upload"></i
+                ></label>
+                <input
+                  type="reset"
+                  value="Poništi"
+                  onclick="isEmptyOrReset('#keyTxtDecUserr')" />
+              </div>
+
               <input
                 id="jwkForDec"
                 type="file"
@@ -210,13 +223,22 @@
               <h6>Unesite IV</h6>
 
               <textarea
+                id="ivTxtAreaDecUser"
                 cols="30"
                 rows="8"
                 class="ivTxtAreaDec user"
-                placeholder="Unesite IV"></textarea>
-              <label for="ivForDec" class="textForEncFileLabel"
-                >Izaberite IV <i class="fas fa-file-upload"></i
-              ></label>
+                placeholder="Unesite IV"
+                oninput="handleTextJwkIVforDec('#textForDec', '#keyTxtDecUser', '#ivTxtAreaDecUser')"></textarea>
+
+              <div>
+                <label for="ivForDec" class="textForEncFileLabel"
+                  >Izaberite IV <i class="fas fa-file-upload"></i
+                ></label>
+                <input
+                  type="reset"
+                  value="Poništi"
+                  onclick="isEmptyOrReset('#ivTxtAreaDecUser')" />
+              </div>
               <input
                 id="ivForDec"
                 type="file"
@@ -228,12 +250,12 @@
           </div>
         </div>
         <!-- start encyption btn -->
-        <button type="submit" class="startDecryption">
+        <button type="submit" class="startDecryption hide">
           Pokreni Dekripciju
         </button>
         <!-- end of start decryptionbtn -->
         <!-- output decoded txt -->
-        <h3>Dekriptovani text</h3>
+        <h3 class="decryptedHeader">Dekriptovani text</h3>
         <div class="displayEncryptedTxt">
           <textarea
             id="areaDisplayDecTxt"
@@ -288,11 +310,32 @@
           console.log("stani");
         }
       }
-      function handleTextAreaInput(e) {
-        if (e.value) {
+      function handleTextAreaInput(txtIsEmpty, jwkIsEmpty, ivIsEmpty) {
+        const getTxtValue = document.querySelector(txtIsEmpty).value;
+        const getJwkValue = document.querySelector(jwkIsEmpty).value;
+        const getIvValue = document.querySelector(ivIsEmpty).value;
+        const isUserJwkIvChecked =
+          document.querySelector("#userKeyIVch").checked;
+
+        if (isUserJwkIvChecked && getTxtValue && getJwkValue && getIvValue) {
+          getTextArea.classList.remove("hide");
+        } else if (!isUserJwkIvChecked && getTxtValue) {
           getTextArea.classList.remove("hide");
         } else {
           getTextArea.classList.add("hide");
+        }
+      }
+      const getStartDecBtn = document.querySelector(".startDecryption");
+
+      function handleTextJwkIVforDec(txtIsEmpty, jwkIsEmpty, ivIsEmpty) {
+        const getTxtValue = document.querySelector(txtIsEmpty).value;
+        const getJwkValue = document.querySelector(jwkIsEmpty).value;
+        const getIvValue = document.querySelector(ivIsEmpty).value;
+
+        if (getTxtValue && getJwkValue && getIvValue) {
+          getStartDecBtn.classList.remove("hide");
+        } else {
+          getStartDecBtn.classList.add("hide");
         }
       }
     </script>

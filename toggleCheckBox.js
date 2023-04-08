@@ -17,5 +17,5 @@ function enableUserJwkIv(checkboxQueryName, displayClassName, hideClassName) {
   const userKeyIV = document.querySelector(checkboxQueryName);
   userKeyIV.addEventListener("click", toggle);
 }
-enableUserJwkIv("#userKeyIV", ".displayKeyAndIV", ".random"); // enable user input jwk adn iv for encryption
+enableUserJwkIv("#userKeyIVch", ".displayKeyAndIV", ".random"); // enable user input jwk adn iv for encryption
 // enableUserJwkIv("#userKeyIVDec", ".displayKeyAndIVDec"); // enable user input jwk and iv for decryption
