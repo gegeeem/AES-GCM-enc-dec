@@ -127,6 +127,7 @@ input[type="checkbox"] {
   accent-color: #446aab;
 }
 #rstBtn {
+  -webkit-appearance: none;
   font-size: medium;
   font-family: inherit;
   padding: 8px 10px;
@@ -134,12 +135,12 @@ input[type="checkbox"] {
   background-color: white;
   border: 2px solid var(--blueTranspa);
   color: var(--blueTranspa);
-  border-radius: 0px;
   border-radius: 5px;
 
   margin: 3px;
 }
 #rstBtn:hover {
+  -webkit-appearance: none;
   background-color: #446aab;
   color: white;
   border-radius: 5px;
@@ -148,7 +149,6 @@ button {
   font-size: medium;
   font-family: inherit;
   padding: 8px 10px;
-  border: 0;
   background-color: white;
   border: 2px solid var(--blueTranspa);
   color: var(--blueTranspa);
