@@ -296,7 +296,13 @@
         reader.onload = function () {
           console.log(reader.result);
           document.querySelector(elementSelector).value = reader.result;
-          document.querySelector(".startEncryption").classList.remove("hide");
+          // document.querySelector(".startEncryption").classList.remove("hide");
+          handleTextAreaInput("#textForEnc", "#keyTxtUser", "#ivTxtAreaUser");
+          handleTextJwkIVforDec(
+            "#textForDec",
+            "#keyTxtDecUser",
+            "#ivTxtAreaDecUser"
+          );
         };
 
         reader.onerror = function () {
@@ -322,6 +328,9 @@
         const getTxtValue = document.querySelector(txtIsEmpty).value;
         const getJwkValue = document.querySelector(jwkIsEmpty).value;
         const getIvValue = document.querySelector(ivIsEmpty).value;
+        console.log("getTxtValue", getTxtValue);
+        console.log("getJwkValue", getJwkValue);
+        console.log("getIvValue", getIvValue);
         const isUserJwkIvChecked =
           document.querySelector("#userKeyIVch").checked;
 
