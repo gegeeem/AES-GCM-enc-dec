@@ -135,7 +135,7 @@ button {
 
   margin: 3px;
 }
-.rstBtn {
+#rstBtn {
   font-size: medium;
   font-family: inherit;
   padding: 8px 10px;
@@ -152,7 +152,7 @@ button:hover {
   color: white;
   border-radius: 5px;
 }
-.rstBtn:hover {
+#rstBtn:hover {
   background-color: #446aab;
   color: white;
   border-radius: 5px;
