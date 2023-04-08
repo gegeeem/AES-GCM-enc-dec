@@ -181,9 +181,17 @@
             required=""
             oninput="handleTextJwkIVforDec('#textForDec', '#keyTxtDecUser', '#ivTxtAreaDecUser')"></textarea>
           <div class="getFileAndReset">
-            <label for="textForDecFile" class="textForEncFileLabel"
-              >Izaberite fajl <i class="fas fa-file-upload"></i
-            ></label>
+            <div>
+              <label for="textForDecFile" class="textForEncFileLabel"
+                >Izaberite fajl <i class="fas fa-file-upload"></i
+              ></label>
+              <input
+                type="reset"
+                id="rstBtn"
+                value="Poništi"
+                onclick="isEmptyOrReset('#textForDec')" />
+            </div>
+
             <input
               id="textForDecFile"
               type="file"
@@ -191,7 +199,7 @@
               accept=".txt"
               hidden />
             <!-- accept=".txt, .doc, .docx"  -->
-            <button onclick="(e)=>isEmptyOrReset(e)">Poništi</button>
+            <!-- <button onclick="(e)=>isEmptyOrReset(e)">Poništi</button> -->
             <!-- <input type="reset" value="ne" /> -->
           </div>
         </form>
