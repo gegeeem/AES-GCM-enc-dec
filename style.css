@@ -143,6 +143,9 @@ button:hover {
 input[type="checkbox"] {
   accent-color: #446aab;
 }
+.userKeyIVLabel {
+  padding: 10px;
+}
 .keyAndIV {
   width: 100%;
   padding-top: 8px;
@@ -158,6 +161,11 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.decryptedHeader {
+  padding-top: 20px;
+  width: 98%;
+  border-top: 2px solid var(--gray);
 }
 .displayEncryptedTxt {
   display: flex;

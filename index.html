@@ -55,7 +55,7 @@
         </form>
 
         <div class="keyAndIV">
-          <label for="userKeyIV"
+          <label for="userKeyIV" class="userKeyIVLabel"
             ><input
               type="checkbox"
               name="userKeyIV"
@@ -107,6 +107,7 @@
         </button>
         <!-- end of start encryptionbtn -->
         <!-- output encoded txt -->
+        <h3 class="decryptedHeader">Enkriptovani text</h3>
         <div class="displayEncryptedTxt">
           <textarea
             id="areaDisplayEncTxt"
@@ -120,10 +121,12 @@
         <!-- <input type="button" class="hajde" value="preuzmi" /> -->
         <!-- end of start ecnryption -->
         <!-- download encrypted txt, secret key & iv -->
+
         <button class="hajde">
           Preuzmite kriptovani fajl <i class="fas fa-file-download"></i>
         </button>
-        <div class="displayKeyAndIV">
+
+        <div class="displayKeyAndIV random">
           <div class="secretKey">
             <textarea cols="30" rows="8" class="exportJWK" readonly></textarea>
             <button class="btnExportJWK">
@@ -216,6 +219,7 @@
         </button>
         <!-- end of start decryptionbtn -->
         <!-- output decoded txt -->
+        <h3>Dekriptovani text</h3>
         <div class="displayEncryptedTxt">
           <textarea
             id="areaDisplayDecTxt"
