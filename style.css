@@ -123,7 +123,8 @@ form {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-button {
+button,
+input[type="reset"] {
   font-size: medium;
   font-family: inherit;
   padding: 8px 10px;
@@ -135,7 +136,8 @@ button {
 
   margin: 3px;
 }
-button:hover {
+button:hover,
+input[type="reset"]:hover {
   background-color: #446aab;
   color: white;
   border-radius: 5px;
