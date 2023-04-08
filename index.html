@@ -333,13 +333,18 @@
           getTextArea.classList.add("hide");
         }
       }
-      const getStartDecBtn = document.querySelector(".startDecryption");
 
       function handleTextJwkIVforDec(txtIsEmpty, jwkIsEmpty, ivIsEmpty) {
+        const getStartDecBtn = document.querySelector(".startDecryption");
         const getTxtValue = document.querySelector(txtIsEmpty).value;
         const getJwkValue = document.querySelector(jwkIsEmpty).value;
         const getIvValue = document.querySelector(ivIsEmpty).value;
-
+        console.log(
+          "value of...........",
+          getTxtValue,
+          getJwkValue,
+          getIvValue
+        );
         if (getTxtValue && getJwkValue && getIvValue) {
           getStartDecBtn.classList.remove("hide");
         } else {

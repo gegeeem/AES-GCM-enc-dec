@@ -156,7 +156,7 @@ const handleBtnExportIV = () => {
 const handleBtnTextForEnc = async () => {
   console.log("ekripcija pocela!!!");
 
-  const userInputKeyIV = document.querySelector("#userKeyIV");
+  const userInputKeyIV = document.querySelector("#userKeyIVch");
   if (!userInputKeyIV.checked) {
     window.crypto.subtle
       .generateKey(
