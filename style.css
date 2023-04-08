@@ -124,7 +124,7 @@ form {
   justify-content: space-evenly;
 }
 button,
-input[type="reset"] {
+.rstBtn {
   font-size: medium;
   font-family: inherit;
   padding: 8px 10px;
@@ -137,7 +137,7 @@ input[type="reset"] {
   margin: 3px;
 }
 button:hover,
-input[type="reset"]:hover {
+.rstBtn:hover {
   background-color: #446aab;
   color: white;
   border-radius: 5px;
