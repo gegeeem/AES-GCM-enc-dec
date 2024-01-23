@@ -66,7 +66,7 @@ body {
 }
 .selected {
   background-color: var(--gray);
-  color: rgb(255, 255, 255);
+  color: var(--blueTranspa);
   border-top: 2px solid var(--gray);
   border-left: 2px solid var(--gray);
   border-right: 2px solid var(--gray);
